@@ -1,0 +1,39 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2025-08-05T01:05:13Z",
+  "base_url": "https://registry.go-profile.dev",
+  "categories": [
+    "development"
+  ],
+  "modules": {
+    "go": {
+      "latest": "1.0.0",
+      "versions": [
+        "1.0.0"
+      ],
+      "category": "development",
+      "description": "GoLang configuration module",
+      "url": "modules/development/go.json",
+      "checksum": "sha256:ad5415b2ee36bcf5babda68da18c6fe06766c3ae9b067648745f1eaa8e3fa59d",
+      "size": 3527,
+      "tags": [
+        "bash",
+        "darwin",
+        "development",
+        "fish",
+        "go",
+        "linux",
+        "powershell",
+        "windows",
+        "zsh"
+      ]
+    }
+  },
+  "statistics": {
+    "total_modules": 1,
+    "total_downloads": 0,
+    "categories_count": {
+      "development": 1
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "module": "go",
+  "version": "1.0.0",
+  "release_date": "2025-08-05T01:05:13Z",
+  "category": "development",
+  "changelog": [
+    {
+      "type": "added",
+      "description": "Initial go module"
+    }
+  ],
+  "breaking_changes": [],
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "linux",
+      "windows"
+    ],
+    "shells": [
+      "bash",
+      "zsh",
+      "fish",
+      "powershell"
+    ]
+  },
+  "file_info": {
+    "url": "modules/development/go.json",
+    "checksum": "sha256:ad5415b2ee36bcf5babda68da18c6fe06766c3ae9b067648745f1eaa8e3fa59d",
+    "size": 3527,
+    "mime_type": "application/json"
+  },
+  "tags": [
+    "bash",
+    "darwin",
+    "development",
+    "fish",
+    "go",
+    "linux",
+    "powershell",
+    "windows",
+    "zsh"
+  ]
+}

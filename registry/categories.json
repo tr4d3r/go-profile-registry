@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "categories": {
+    "ai-tools": {
+      "name": "AI Tools",
+      "description": "Artificial Intelligence and Machine Learning development tools",
+      "icon": "🤖",
+      "color": "#FF6B35",
+      "priority": 2,
+      "modules": []
+    },
+    "development": {
+      "name": "Development Tools",
+      "description": "Programming languages, version control, and development utilities",
+      "icon": "🛠️",
+      "color": "#007ACC",
+      "priority": 1,
+      "modules": [
+        "go"
+      ]
+    },
+    "devops": {
+      "name": "DevOps",
+      "description": "Infrastructure, deployment, and operations tools",
+      "icon": "⚙️",
+      "color": "#28A745",
+      "priority": 4,
+      "modules": []
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "description": "Security, compliance, and enterprise-specific configurations",
+      "icon": "🏢",
+      "color": "#6F42C1",
+      "priority": 3,
+      "modules": []
+    },
+    "platform": {
+      "name": "Platform",
+      "description": "Operating system and platform-specific configurations",
+      "icon": "💻",
+      "color": "#6C757D",
+      "priority": 5,
+      "modules": []
+    }
+  },
+  "metadata": {
+    "total_categories": 5,
+    "active_categories": 1,
+    "last_updated": "2025-08-05T01:05:13Z"
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "name": "go",
+  "version": "1.0.0",
+  "description": "GoLang configuration module",
+  "category": "development",
+  "platforms": ["darwin", "linux", "windows"],
+  "shells": ["bash", "zsh", "fish", "powershell"],
+  "environment": [
+    {
+      "name": "GOPATH",
+      "value": "$HOME/go",
+      "export": true
+    },
+    {
+      "name": "GOPROXY",
+      "value": "https://proxy.golang.org",
+      "export": false
+    },
+    {
+      "name": "EDITOR",
+      "value": "code --wait",
+      "export": true,
+      "description": "The editor to use for editing files"
+    },
+    {
+      "name": "GOPRIVATE",
+      "value": "github.com/yourcompany/*",
+      "export": false,
+      "description": "Enable Go modules"
+    }
+  ],
+  "aliases": [
+    {
+      "name": "gob",
+      "command": "go build"
+    },
+    {
+      "name": "gor",
+      "command": "go run"
+    },
+    {
+      "name": "got",
+      "command": "go test"
+    },
+    {
+      "name": "gom",
+      "command": "go mod"
+    },
+    {
+      "name": "goi",
+      "command": "go install"
+    },
+    {
+      "name": "gog",
+      "command": "go get"
+    },
+    {
+      "name": "gof",
+      "command": "go fmt"
+    },
+    {
+      "name": "gov",
+      "command": "go vet"
+    },
+    {
+      "name": "goc",
+      "command": "go clean"
+    },
+    {
+      "name": "gomt",
+      "command": "go mod tidy"
+    }
+  ],
+  "functions": [
+    {
+      "name": "go_init_project",
+      "description": "Initialize a new Go project with module",
+      "commands": [
+        "if [ -z \"$1\" ]; then echo \"Usage: go_init_project <module-name>\"; return 1; fi",
+        "go mod init $1",
+        "touch main.go",
+        "echo 'package main\\n\\nimport \"fmt\"\\n\\nfunc main() {\\n\\tfmt.Println(\"Hello, World!\")\\n}' > main.go"
+      ]
+    },
+    {
+      "name": "go_test_all",
+      "description": "Run tests for all packages with coverage",
+      "commands": [
+        "go test -v -race -coverprofile=coverage.out ./...",
+        "go tool cover -html=coverage.out -o coverage.html"
+      ]
+    },
+    {
+      "name": "go_deps_update",
+      "description": "Update Go dependencies and tidy modules",
+      "commands": [
+        "go get -u ./...",
+        "go mod tidy",
+        "go mod verify"
+      ]
+    }
+  ],
+  "path": [
+    {
+      "directory": "$GOPATH/bin",
+      "prepend": true
+    },
+    {
+      "directory": "$HOME/go/bin",
+      "prepend": true
+    }
+  ],
+  "files": [
+    {
+      "path": "~/.golangci.yml",
+      "source": true,
+      "content": "# golangci-lint configuration\nrun:\n  timeout: 5m\n  tests: true\n\nlinters-settings:\n  gofmt:\n    simplify: true\n  govet:\n    check-shadowing: true\n\nlinters:\n  enable:\n    - gofmt\n    - govet\n    - golint\n    - ineffassign\n    - misspell"
+    }
+  ],
+  "checks": [
+    {
+      "name": "go_installed",
+      "description": "Check if Go is installed",
+      "type": "command",
+      "command": "go",
+      "args": ["version"],
+      "required": true,
+      "on_success": [
+        "echo \"Go version: $(go version)\""
+      ],
+      "on_failure": [
+        "echo 'Go is not installed. Please install Go from https://golang.org/dl/'"
+      ]
+    },
+    {
+      "name": "gopath_exists",
+      "description": "Check if GOPATH directory exists",
+      "type": "directory",
+      "path": "$GOPATH",
+      "required": false,
+      "on_success": [
+        "echo \"GOPATH directory exists: $GOPATH\""
+      ],
+      "on_failure": [
+        "mkdir -p $GOPATH",
+        "echo \"Created GOPATH directory: $GOPATH\""
+      ]
+    }
+  ]
+}

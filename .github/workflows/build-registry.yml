@@ -1,0 +1,63 @@
+name: Build Registry
+
+on:
+  push:
+    paths:
+      - 'modules/**/*.json'
+      - 'scripts/**'
+      - '.github/workflows/build-registry.yml'
+  pull_request:
+    paths:
+      - 'modules/**/*.json'
+      - 'scripts/**'
+      - '.github/workflows/build-registry.yml'
+
+jobs:
+  build-registry:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+          
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+          
+      - name: Validate modules
+        run: make validate
+        
+      - name: Build registry
+        run: make build-registry
+        
+      - name: Validate registry
+        run: make validate-registry
+        
+      - name: Show statistics
+        run: make stats
+        
+      - name: Commit and push registry changes
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add registry/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-update registry from modules [skip ci]"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Upload registry artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: registry-files
+          path: registry/
+          retention-days: 30

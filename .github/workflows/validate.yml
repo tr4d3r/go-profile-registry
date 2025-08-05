@@ -1,0 +1,81 @@
+name: Validate Modules
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+          
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+        
+      - name: Install JSON Schema validator
+        run: npm install -g ajv-cli
+        
+      - name: Validate JSON syntax
+        run: make validate
+        
+      - name: Build registry builder
+        run: make build-builder
+        
+      - name: Test registry generation
+        run: make test
+        
+      - name: Check for required fields
+        run: |
+          echo "🔍 Checking for required fields in modules..."
+          for json_file in $(find modules -name "*.json"); do
+            echo "Checking $json_file"
+            # Check required fields
+            if ! jq -e '.name' "$json_file" >/dev/null; then
+              echo "❌ Missing 'name' field in $json_file"
+              exit 1
+            fi
+            if ! jq -e '.version' "$json_file" >/dev/null; then
+              echo "❌ Missing 'version' field in $json_file"
+              exit 1
+            fi
+            if ! jq -e '.description' "$json_file" >/dev/null; then
+              echo "❌ Missing 'description' field in $json_file"
+              exit 1
+            fi
+            if ! jq -e '.category' "$json_file" >/dev/null; then
+              echo "❌ Missing 'category' field in $json_file"
+              exit 1
+            fi
+            if ! jq -e '.platforms' "$json_file" >/dev/null; then
+              echo "❌ Missing 'platforms' field in $json_file"
+              exit 1
+            fi
+            if ! jq -e '.shells' "$json_file" >/dev/null; then
+              echo "❌ Missing 'shells' field in $json_file"
+              exit 1
+            fi
+          done
+          echo "✅ All modules have required fields"
+          
+      - name: Check version format
+        run: |
+          echo "🔍 Checking version format (semantic versioning)..."
+          for json_file in $(find modules -name "*.json"); do
+            version=$(jq -r '.version' "$json_file")
+            if ! echo "$version" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+              echo "❌ Invalid version format '$version' in $json_file"
+              echo "   Expected semantic version format: X.Y.Z"
+              exit 1
+            fi
+          done
+          echo "✅ All modules have valid version format"
