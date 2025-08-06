@@ -5,6 +5,22 @@
   "category": "development",
   "platforms": ["darwin", "linux", "windows"],
   "shells": ["bash", "zsh", "fish", "powershell"],
+  "path": [
+    {
+      "path": "/usr/local/go/bin",
+      "description": "Go installation binaries",
+      "platforms": ["darwin", "linux"]
+    },
+    {
+      "path": "$HOME/go/bin", 
+      "description": "Go workspace binaries"
+    },
+    {
+      "path": "C:\\Go\\bin",
+      "description": "Go installation binaries", 
+      "platforms": ["windows"]
+    }
+  ],
   "environment": [
     {
       "name": "GOPATH",
@@ -17,10 +33,10 @@
       "export": false
     },
     {
-      "name": "EDITOR",
-      "value": "code --wait",
-      "export": true,
-      "description": "The editor to use for editing files"
+      "name": "GO111MODULE",
+      "value": "on",
+      "export": false,
+      "description": "Enable Go modules"
     },
     {
       "name": "GOPRIVATE",

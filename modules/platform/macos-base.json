@@ -1,0 +1,50 @@
+{
+  "name": "macos-base",
+  "version": "1.0.0",
+  "description": "macOS base system PATH configuration", 
+  "category": "platform",
+  "platforms": ["darwin"],
+  "shells": ["bash", "zsh"],
+  "path": [
+    {
+      "path": "/System/Cryptexes/App/usr/bin",
+      "description": "System cryptex binaries",
+      "priority": 100
+    },
+    {
+      "path": "/usr/bin", 
+      "description": "System binaries",
+      "priority": 110
+    },
+    {
+      "path": "/bin",
+      "description": "Essential binaries", 
+      "priority": 120
+    },
+    {
+      "path": "/usr/sbin",
+      "description": "System admin binaries",
+      "priority": 130
+    },
+    {
+      "path": "/sbin", 
+      "description": "Essential admin binaries",
+      "priority": 140
+    },
+    {
+      "path": "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin",
+      "description": "Bootstrap local binaries",
+      "priority": 150
+    },
+    {
+      "path": "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin", 
+      "description": "Bootstrap system binaries",
+      "priority": 160
+    },
+    {
+      "path": "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin",
+      "description": "Bootstrap internal binaries", 
+      "priority": 170
+    }
+  ]
+}
