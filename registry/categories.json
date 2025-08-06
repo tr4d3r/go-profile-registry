@@ -41,12 +41,14 @@
       "icon": "💻",
       "color": "#6C757D",
       "priority": 5,
-      "modules": []
+      "modules": [
+        "macos-base"
+      ]
     }
   },
   "metadata": {
     "total_categories": 5,
-    "active_categories": 1,
-    "last_updated": "2025-08-05T01:33:02Z"
+    "active_categories": 2,
+    "last_updated": "2025-08-06T02:31:00Z"
   }
 }

@@ -1,9 +1,10 @@
 {
   "version": "1.0.0",
-  "last_updated": "2025-08-05T01:33:02Z",
+  "last_updated": "2025-08-06T02:31:00Z",
   "base_url": "https://registry.go-profile.dev",
   "categories": [
-    "development"
+    "development",
+    "platform"
   ],
   "modules": {
     "go": {
@@ -14,8 +15,8 @@
       "category": "development",
       "description": "GoLang configuration module",
       "url": "modules/development/go.json",
-      "checksum": "sha256:ad5415b2ee36bcf5babda68da18c6fe06766c3ae9b067648745f1eaa8e3fa59d",
-      "size": 3527,
+      "checksum": "sha256:cf3b6f2a8fe91d46e953ed766de83ce5796ed138e3279826c2b0947c6b518cfa",
+      "size": 3870,
       "tags": [
         "bash",
         "darwin",
@@ -27,13 +28,32 @@
         "windows",
         "zsh"
       ]
+    },
+    "macos-base": {
+      "latest": "1.0.0",
+      "versions": [
+        "1.0.0"
+      ],
+      "category": "platform",
+      "description": "macOS base system PATH configuration",
+      "url": "modules/platform/macos-base.json",
+      "checksum": "sha256:e347603827cba6cfc01561c35ac46d24669aae322e2c2d558941f0e578710a48",
+      "size": 1286,
+      "tags": [
+        "bash",
+        "darwin",
+        "macos-base",
+        "platform",
+        "zsh"
+      ]
     }
   },
   "statistics": {
-    "total_modules": 1,
+    "total_modules": 2,
     "total_downloads": 0,
     "categories_count": {
-      "development": 1
+      "development": 1,
+      "platform": 1
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "module": "macos-base",
+  "version": "1.0.0",
+  "release_date": "2025-08-06T02:31:00Z",
+  "category": "platform",
+  "changelog": [
+    {
+      "type": "added",
+      "description": "Initial macos-base module"
+    }
+  ],
+  "breaking_changes": [],
+  "compatibility": {
+    "platforms": [
+      "darwin"
+    ],
+    "shells": [
+      "bash",
+      "zsh"
+    ]
+  },
+  "file_info": {
+    "url": "modules/platform/macos-base.json",
+    "checksum": "sha256:e347603827cba6cfc01561c35ac46d24669aae322e2c2d558941f0e578710a48",
+    "size": 1286,
+    "mime_type": "application/json"
+  },
+  "tags": [
+    "bash",
+    "darwin",
+    "macos-base",
+    "platform",
+    "zsh"
+  ]
+}

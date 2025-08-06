@@ -1,7 +1,7 @@
 {
   "module": "go",
   "version": "1.0.0",
-  "release_date": "2025-08-05T01:33:02Z",
+  "release_date": "2025-08-06T02:31:00Z",
   "category": "development",
   "changelog": [
     {
@@ -25,8 +25,8 @@
   },
   "file_info": {
     "url": "modules/development/go.json",
-    "checksum": "sha256:ad5415b2ee36bcf5babda68da18c6fe06766c3ae9b067648745f1eaa8e3fa59d",
-    "size": 3527,
+    "checksum": "sha256:cf3b6f2a8fe91d46e953ed766de83ce5796ed138e3279826c2b0947c6b518cfa",
+    "size": 3870,
     "mime_type": "application/json"
   },
   "tags": [
