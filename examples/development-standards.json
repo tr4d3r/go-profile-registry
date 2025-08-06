@@ -1,0 +1,162 @@
+{
+  "name": "development-standards",
+  "version": "1.0.0",
+  "description": "Standard development environment configuration",
+  "category": "development",
+  "platforms": ["darwin", "linux", "windows"],
+  "shells": ["bash", "zsh", "fish", "powershell"],
+  "environment": [
+    {
+      "name": "EDITOR",
+      "value": "code --wait",
+      "export": true,
+      "description": "Default text editor for git commits and file editing",
+      "required": false
+    },
+    {
+      "name": "PAGER",
+      "value": "less -R",
+      "export": true,
+      "description": "Default pager for viewing large outputs",
+      "required": false,
+      "platform_specific": {
+        "windows": "more"
+      }
+    },
+    {
+      "name": "BROWSER",
+      "value": "google-chrome",
+      "export": true,
+      "description": "Default web browser for opening URLs",
+      "required": false,
+      "platform_specific": {
+        "darwin": "open",
+        "windows": "start"
+      }
+    },
+    {
+      "name": "XDG_CONFIG_HOME",
+      "value": "$HOME/.config",
+      "export": true,
+      "description": "User configuration directory following XDG specification",
+      "required": false,
+      "platform_specific": {
+        "windows": "%APPDATA%"
+      }
+    },
+    {
+      "name": "XDG_DATA_HOME",
+      "value": "$HOME/.local/share",
+      "export": true,
+      "description": "User data directory following XDG specification",
+      "required": false,
+      "platform_specific": {
+        "windows": "%LOCALAPPDATA%"
+      }
+    },
+    {
+      "name": "XDG_CACHE_HOME",
+      "value": "$HOME/.cache",
+      "export": true,
+      "description": "User cache directory following XDG specification",
+      "required": false,
+      "platform_specific": {
+        "windows": "%TEMP%"
+      }
+    },
+    {
+      "name": "TMPDIR",
+      "value": "/tmp",
+      "export": true,
+      "description": "Temporary directory for storing temporary files",
+      "required": false,
+      "platform_specific": {
+        "windows": "%TEMP%",
+        "darwin": "/tmp"
+      }
+    },
+    {
+      "name": "LANG",
+      "value": "en_US.UTF-8",
+      "export": true,
+      "description": "System language and locale setting",
+      "required": false
+    },
+    {
+      "name": "LC_ALL",
+      "value": "en_US.UTF-8",
+      "export": true,
+      "description": "Override for all locale settings",
+      "required": false
+    },
+    {
+      "name": "GIT_AUTHOR_NAME",
+      "value": "",
+      "export": true,
+      "description": "Default Git author name for commits",
+      "required": false,
+      "sensitive": false
+    },
+    {
+      "name": "GIT_AUTHOR_EMAIL",
+      "value": "",
+      "export": true,
+      "description": "Default Git author email for commits",
+      "required": false,
+      "sensitive": false
+    },
+    {
+      "name": "SSH_AUTH_SOCK",
+      "value": "$HOME/.ssh/ssh_auth_sock",
+      "export": true,
+      "description": "SSH agent authentication socket",
+      "required": false
+    },
+    {
+      "name": "GPG_TTY",
+      "value": "$(tty)",
+      "export": true,
+      "description": "TTY for GPG operations and signing",
+      "required": false
+    }
+  ],
+  "aliases": [
+    {
+      "name": "ll",
+      "command": "ls -la",
+      "description": "Long listing format with hidden files"
+    },
+    {
+      "name": "la",
+      "command": "ls -A",
+      "description": "List all files except . and .."
+    },
+    {
+      "name": "grep",
+      "command": "grep --color=auto",
+      "description": "Grep with colored output"
+    }
+  ],
+  "functions": [
+    {
+      "name": "mkcd",
+      "script": "mkdir -p \"$1\" && cd \"$1\"",
+      "description": "Create directory and change into it"
+    },
+    {
+      "name": "extract",
+      "script": "case \"$1\" in\n  *.tar.bz2) tar xjf \"$1\" ;;\n  *.tar.gz) tar xzf \"$1\" ;;\n  *.tar) tar xf \"$1\" ;;\n  *.zip) unzip \"$1\" ;;\n  *) echo \"'$1' cannot be extracted via extract()\" ;;\nesac",
+      "description": "Extract various archive formats"
+    }
+  ],
+  "checks": [
+    {
+      "command": "git --version",
+      "description": "Verify Git is installed"
+    },
+    {
+      "command": "which $EDITOR",
+      "description": "Verify default editor is available"
+    }
+  ]
+}

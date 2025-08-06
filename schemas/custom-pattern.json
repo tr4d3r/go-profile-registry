@@ -1,0 +1,184 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Custom Operational Tier Pattern Schema",
+  "description": "Schema for defining custom operational tier patterns in go-profile modules",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "maxLength": 50,
+      "pattern": "^[a-zA-Z0-9\\s\\-_]+$",
+      "description": "Human-readable name for the pattern"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9\\-_]+$",
+      "description": "URL-safe identifier for the pattern"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Detailed description of the pattern's purpose and use cases"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of the pattern"
+    },
+    "operational_tiers": {
+      "$ref": "#/definitions/operational_tiers"
+    },
+    "use_cases": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 30
+      },
+      "maxItems": 10,
+      "description": "List of specific use cases this pattern addresses"
+    },
+    "recommended_for": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["development", "ai-tools", "enterprise", "devops", "platform"]
+      },
+      "description": "Categories this pattern is recommended for"
+    },
+    "author": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "github": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9\\-_]+$"
+        }
+      },
+      "required": ["name"]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 20
+      },
+      "maxItems": 10,
+      "description": "Tags for categorizing and searching patterns"
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "module_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "required": ["module_name", "description"]
+      },
+      "description": "Example modules that use this pattern"
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Prerequisites or dependencies for using this pattern"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Important warnings or considerations"
+    }
+  },
+  "required": ["name", "slug", "description", "version", "operational_tiers"],
+  "additionalProperties": false,
+  "definitions": {
+    "operational_tiers": {
+      "type": "object",
+      "properties": {
+        "deployment": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["local", "container", "cloud", "bare-metal", "hybrid"]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["development", "staging", "production"]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "network_required",
+              "network_optional",
+              "gpu_required",
+              "gpu_optional",
+              "privileged_access",
+              "security_compliance",
+              "platform_specific",
+              "high_memory",
+              "high_cpu",
+              "persistent_storage"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": ["deployment", "environments"],
+      "additionalProperties": false
+    }
+  },
+  "examples": [
+    {
+      "name": "Microservice Development",
+      "slug": "microservice-dev",
+      "description": "Pattern for developing and deploying microservices with container support",
+      "version": "1.0.0",
+      "operational_tiers": {
+        "deployment": ["local", "container", "cloud"],
+        "environments": ["development", "staging", "production"],
+        "constraints": ["network_required"]
+      },
+      "use_cases": ["api_development", "service_mesh", "container_orchestration"],
+      "recommended_for": ["development", "devops"],
+      "author": {
+        "name": "Jane Developer",
+        "github": "janedev"
+      },
+      "tags": ["microservices", "containers", "api"],
+      "examples": [
+        {
+          "module_name": "docker-compose",
+          "description": "Container orchestration for local development",
+          "category": "devops"
+        }
+      ]
+    }
+  ]
+}

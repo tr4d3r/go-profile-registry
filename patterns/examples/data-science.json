@@ -1,0 +1,52 @@
+{
+  "name": "Data Science Workflow",
+  "slug": "data-science",
+  "description": "Comprehensive data science environment with GPU support, Jupyter notebooks, and ML libraries",
+  "version": "1.0.0",
+  "operational_tiers": {
+    "deployment": ["local", "container", "cloud"],
+    "environments": ["development", "staging", "production"],
+    "constraints": ["gpu_optional", "high_memory", "network_required", "persistent_storage"]
+  },
+  "use_cases": [
+    "data_analysis",
+    "machine_learning",
+    "jupyter_notebooks",
+    "model_training",
+    "data_visualization",
+    "research"
+  ],
+  "recommended_for": ["ai-tools", "development"],
+  "author": {
+    "name": "Data Science Community",
+    "github": "datascience-patterns"
+  },
+  "tags": ["datascience", "jupyter", "ml", "gpu", "python", "research"],
+  "examples": [
+    {
+      "module_name": "jupyter-lab",
+      "description": "JupyterLab interactive development environment",
+      "category": "ai-tools"
+    },
+    {
+      "module_name": "python-ml",
+      "description": "Python machine learning libraries (scikit-learn, pandas, numpy)",
+      "category": "ai-tools"
+    },
+    {
+      "module_name": "cuda-toolkit",
+      "description": "NVIDIA CUDA toolkit for GPU acceleration",
+      "category": "ai-tools"
+    }
+  ],
+  "prerequisites": [
+    "Python 3.8+",
+    "Sufficient RAM (8GB+ recommended)",
+    "GPU support (optional but recommended)"
+  ],
+  "warnings": [
+    "High memory and storage requirements",
+    "GPU drivers may need manual configuration",
+    "Large dataset downloads may be required"
+  ]
+}

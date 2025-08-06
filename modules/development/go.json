@@ -5,28 +5,67 @@
   "category": "development",
   "platforms": ["darwin", "linux", "windows"],
   "shells": ["bash", "zsh", "fish", "powershell"],
+  "operational_tiers": {
+    "deployment": ["local", "container", "cloud"],
+    "environments": ["development", "staging", "production"],
+    "constraints": ["network_optional"]
+  },
   "environment": [
     {
       "name": "GOPATH",
       "value": "$HOME/go",
-      "export": true
+      "export": true,
+      "description": "Go workspace directory for GOPATH mode",
+      "required": false
     },
     {
       "name": "GOPROXY",
       "value": "https://proxy.golang.org",
-      "export": false
+      "export": true,
+      "description": "Go module proxy for downloading modules",
+      "required": false
+    },
+    {
+      "name": "GOSUMDB",
+      "value": "sum.golang.org",
+      "export": true,
+      "description": "Go checksum database for module verification",
+      "required": false
+    },
+    {
+      "name": "GOPRIVATE",
+      "value": "",
+      "export": true,
+      "description": "Comma-separated list of module path prefixes for private modules",
+      "required": false
+    },
+    {
+      "name": "GONOPROXY",
+      "value": "",
+      "export": true,
+      "description": "Comma-separated list of module path prefixes to fetch directly",
+      "required": false
+    },
+    {
+      "name": "GONOSUMDB",
+      "value": "",
+      "export": true,
+      "description": "Comma-separated list of module path prefixes to skip checksum verification",
+      "required": false
+    },
+    {
+      "name": "CGO_ENABLED",
+      "value": "1",
+      "export": false,
+      "description": "Enable or disable CGO (0=disabled, 1=enabled)",
+      "required": false
     },
     {
       "name": "EDITOR",
       "value": "code --wait",
       "export": true,
-      "description": "The editor to use for editing files"
-    },
-    {
-      "name": "GOPRIVATE",
-      "value": "github.com/yourcompany/*",
-      "export": false,
-      "description": "Enable Go modules"
+      "description": "Default text editor for Git commits and file editing",
+      "required": false
     }
   ],
   "aliases": [

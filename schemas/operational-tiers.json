@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Operational Tiers Schema",
+  "description": "Defines operational tier classifications for go-profile modules",
+  "type": "object",
+  "properties": {
+    "deployment": {
+      "type": "array",
+      "description": "Supported deployment environments",
+      "items": {
+        "type": "string",
+        "enum": [
+          "local",
+          "container", 
+          "cloud",
+          "bare-metal",
+          "hybrid"
+        ]
+      }
+    },
+    "environments": {
+      "type": "array",
+      "description": "Compatible operational environments",
+      "items": {
+        "type": "string",
+        "enum": [
+          "development",
+          "staging",
+          "production"
+        ]
+      }
+    },
+    "constraints": {
+      "type": "array",
+      "description": "Operational constraints and requirements",
+      "items": {
+        "type": "string",
+        "enum": [
+          "network_required",
+          "network_optional",
+          "gpu_required",
+          "gpu_optional",
+          "privileged_access",
+          "security_compliance",
+          "platform_specific",
+          "high_memory",
+          "high_cpu",
+          "persistent_storage"
+        ]
+      }
+    }
+  },
+  "required": ["deployment", "environments"],
+  "additionalProperties": false,
+  "definitions": {
+    "deployment_types": {
+      "local": {
+        "description": "Local development environments - personal machines, IDEs",
+        "use_cases": ["development", "testing", "prototyping"]
+      },
+      "container": {
+        "description": "Containerized environments - Docker, Kubernetes, container platforms",
+        "use_cases": ["microservices", "scalable_deployment", "isolation"]
+      },
+      "cloud": {
+        "description": "Cloud-native services and platforms",
+        "use_cases": ["managed_services", "serverless", "auto_scaling"]
+      },
+      "bare-metal": {
+        "description": "Direct hardware deployment",
+        "use_cases": ["high_performance", "specialized_hardware", "legacy_systems"]
+      },
+      "hybrid": {
+        "description": "Works across multiple deployment types",
+        "use_cases": ["flexible_deployment", "migration_scenarios"]
+      }
+    },
+    "environment_types": {
+      "development": {
+        "description": "Development and testing environments",
+        "characteristics": ["rapid_iteration", "debugging_tools", "relaxed_security"]
+      },
+      "staging": {
+        "description": "Pre-production testing environments",
+        "characteristics": ["production_like", "integration_testing", "performance_testing"]
+      },
+      "production": {
+        "description": "Live production environments",
+        "characteristics": ["high_availability", "security_hardened", "monitoring"]
+      }
+    },
+    "constraint_types": {
+      "network_required": {
+        "description": "Requires network connectivity for functionality"
+      },
+      "network_optional": {
+        "description": "Can work offline or with limited connectivity"
+      },
+      "gpu_required": {
+        "description": "Requires GPU hardware for functionality"
+      },
+      "gpu_optional": {
+        "description": "Can utilize GPU if available but not required"
+      },
+      "privileged_access": {
+        "description": "Requires elevated system permissions"
+      },
+      "security_compliance": {
+        "description": "Implements security and compliance requirements"
+      },
+      "platform_specific": {
+        "description": "Functionality varies by operating system"
+      },
+      "high_memory": {
+        "description": "Requires significant memory resources"
+      },
+      "high_cpu": {
+        "description": "Requires significant CPU resources"
+      },
+      "persistent_storage": {
+        "description": "Requires persistent storage for data/configuration"
+      }
+    }
+  }
+}

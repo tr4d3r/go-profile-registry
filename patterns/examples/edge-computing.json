@@ -1,0 +1,45 @@
+{
+  "name": "Edge Computing Environment",
+  "slug": "edge-computing",
+  "description": "Lightweight pattern for edge computing and IoT deployments with minimal resource requirements",
+  "version": "1.0.0",
+  "operational_tiers": {
+    "deployment": ["bare-metal", "container"],
+    "environments": ["development", "production"],
+    "constraints": ["network_optional", "platform_specific"]
+  },
+  "use_cases": [
+    "iot_devices",
+    "edge_computing",
+    "sensor_data",
+    "offline_processing",
+    "embedded_systems"
+  ],
+  "recommended_for": ["platform", "devops"],
+  "author": {
+    "name": "IoT Development Team",
+    "github": "iot-patterns"
+  },
+  "tags": ["edge", "iot", "embedded", "offline", "sensors"],
+  "examples": [
+    {
+      "module_name": "mqtt-client",
+      "description": "MQTT client for IoT communication",
+      "category": "platform"
+    },
+    {
+      "module_name": "sensor-drivers",
+      "description": "Hardware sensor driver utilities",
+      "category": "platform"
+    }
+  ],
+  "prerequisites": [
+    "ARM or x86 compatible hardware",
+    "Real-time operating system support"
+  ],
+  "warnings": [
+    "Limited by hardware constraints",
+    "Network connectivity may be intermittent",
+    "Power consumption considerations"
+  ]
+}

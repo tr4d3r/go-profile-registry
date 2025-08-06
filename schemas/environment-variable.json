@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Environment Variable Schema",
+  "description": "Schema for environment variables in go-profile modules",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*$",
+      "description": "Environment variable name in UPPER_CASE"
+    },
+    "value": {
+      "type": "string",
+      "description": "Default value for the environment variable"
+    },
+    "export": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to export the variable to child processes"
+    },
+    "description": {
+      "type": "string",
+      "description": "Human-readable description of the variable's purpose"
+    },
+    "required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this variable is required for the module to function"
+    },
+    "sensitive": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this variable contains sensitive information"
+    },
+    "platform_specific": {
+      "type": "object",
+      "properties": {
+        "windows": {
+          "type": "string",
+          "description": "Windows-specific value"
+        },
+        "darwin": {
+          "type": "string",
+          "description": "macOS-specific value"
+        },
+        "linux": {
+          "type": "string",
+          "description": "Linux-specific value"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Platform-specific values that override the default value"
+    }
+  },
+  "required": ["name", "value"],
+  "additionalProperties": false
+}

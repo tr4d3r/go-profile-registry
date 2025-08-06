@@ -23,7 +23,7 @@ build-builder:
 
 # Validate all modules
 .PHONY: validate
-validate:
+validate: validate-env-vars validate-operational-tiers
 	@echo "🔍 Validating modules..."
 	@for json_file in $$(find $(MODULES_DIR) -name "*.json"); do \
 		echo "Validating $$json_file"; \
@@ -33,6 +33,18 @@ validate:
 		fi; \
 	done
 	@echo "✅ All modules are valid JSON"
+
+# Validate environment variables in modules
+.PHONY: validate-env-vars
+validate-env-vars:
+	@echo "🔍 Validating environment variables..."
+	./scripts/validate-env-vars.sh
+
+# Validate operational tiers in modules
+.PHONY: validate-operational-tiers
+validate-operational-tiers:
+	@echo "🔍 Validating operational tiers..."
+	./scripts/validate-operational-tiers.sh
 
 # Validate registry files
 .PHONY: validate-registry

@@ -16,28 +16,35 @@ import (
 
 // Module represents a go-profile module
 type Module struct {
-	Name         string        `json:"name"`
-	Version      string        `json:"version"`
-	Description  string        `json:"description"`
-	Category     string        `json:"category"`
-	Author       string        `json:"author,omitempty"`
-	License      string        `json:"license,omitempty"`
-	Homepage     string        `json:"homepage,omitempty"`
-	Repository   *Repository   `json:"repository,omitempty"`
-	Platforms    []string      `json:"platforms"`
-	Shells       []string      `json:"shells"`
-	Dependencies *Dependencies `json:"dependencies,omitempty"`
-	Environment  []Environment `json:"environment,omitempty"`
-	Aliases      []Alias       `json:"aliases,omitempty"`
-	Functions    []Function    `json:"functions,omitempty"`
-	Path         []PathEntry   `json:"path,omitempty"`
-	Files        []File        `json:"files,omitempty"`
-	Checks       []Check       `json:"checks,omitempty"`
+	Name              string             `json:"name"`
+	Version           string             `json:"version"`
+	Description       string             `json:"description"`
+	Category          string             `json:"category"`
+	Author            string             `json:"author,omitempty"`
+	License           string             `json:"license,omitempty"`
+	Homepage          string             `json:"homepage,omitempty"`
+	Repository        *Repository        `json:"repository,omitempty"`
+	Platforms         []string           `json:"platforms"`
+	Shells            []string           `json:"shells"`
+	OperationalTiers  *OperationalTiers  `json:"operational_tiers,omitempty"`
+	Dependencies      *Dependencies      `json:"dependencies,omitempty"`
+	Environment       []Environment      `json:"environment,omitempty"`
+	Aliases           []Alias            `json:"aliases,omitempty"`
+	Functions         []Function         `json:"functions,omitempty"`
+	Path              []PathEntry        `json:"path,omitempty"`
+	Files             []File             `json:"files,omitempty"`
+	Checks            []Check            `json:"checks,omitempty"`
 }
 
 type Repository struct {
 	Type string `json:"type"`
 	URL  string `json:"url"`
+}
+
+type OperationalTiers struct {
+	Deployment   []string `json:"deployment,omitempty"`
+	Environments []string `json:"environments,omitempty"`
+	Constraints  []string `json:"constraints,omitempty"`
 }
 
 type Dependencies struct {

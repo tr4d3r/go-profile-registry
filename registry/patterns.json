@@ -1,0 +1,118 @@
+{
+  "version": "1.0.0",
+  "patterns": {
+    "official": {
+      "web-development": {
+        "name": "Web Development Stack",
+        "description": "Standard web development environment with local and containerized deployment",
+        "operational_tiers": {
+          "deployment": ["local", "container", "cloud"],
+          "environments": ["development", "staging", "production"],
+          "constraints": ["network_required"]
+        },
+        "use_cases": ["frontend", "backend", "fullstack", "api_development"],
+        "recommended_for": ["development", "devops"]
+      },
+      "machine-learning": {
+        "name": "Machine Learning Workload",
+        "description": "ML/AI development with GPU support and high resource requirements",
+        "operational_tiers": {
+          "deployment": ["local", "container", "cloud"],
+          "environments": ["development", "staging", "production"],
+          "constraints": ["gpu_optional", "high_memory", "network_required"]
+        },
+        "use_cases": ["model_training", "inference", "data_processing"],
+        "recommended_for": ["ai-tools"]
+      },
+      "enterprise-security": {
+        "name": "Enterprise Security Stack",
+        "description": "Security-focused deployment with compliance requirements",
+        "operational_tiers": {
+          "deployment": ["container", "cloud", "hybrid"],
+          "environments": ["staging", "production"],
+          "constraints": ["network_required", "security_compliance", "privileged_access"]
+        },
+        "use_cases": ["security_scanning", "compliance_monitoring", "audit_logging"],
+        "recommended_for": ["enterprise", "devops"]
+      },
+      "local-development": {
+        "name": "Local Development Only",
+        "description": "Tools that only work in local development environments",
+        "operational_tiers": {
+          "deployment": ["local"],
+          "environments": ["development"],
+          "constraints": ["network_optional"]
+        },
+        "use_cases": ["prototyping", "learning", "personal_tools"],
+        "recommended_for": ["development"]
+      },
+      "cloud-native": {
+        "name": "Cloud Native Services",
+        "description": "Cloud-native applications and services",
+        "operational_tiers": {
+          "deployment": ["cloud"],
+          "environments": ["development", "staging", "production"],
+          "constraints": ["network_required", "persistent_storage"]
+        },
+        "use_cases": ["microservices", "serverless", "managed_services"],
+        "recommended_for": ["devops", "platform"]
+      },
+      "high-performance": {
+        "name": "High Performance Computing",
+        "description": "Resource-intensive applications requiring dedicated hardware",
+        "operational_tiers": {
+          "deployment": ["bare-metal", "container"],
+          "environments": ["development", "production"],
+          "constraints": ["high_cpu", "high_memory", "platform_specific"]
+        },
+        "use_cases": ["scientific_computing", "data_processing", "simulation"],
+        "recommended_for": ["platform"]
+      }
+    },
+    "community": {
+      "gaming-development": {
+        "name": "Game Development Stack",
+        "description": "Game development tools and engines",
+        "operational_tiers": {
+          "deployment": ["local", "container"],
+          "environments": ["development", "staging"],
+          "constraints": ["gpu_optional", "high_memory", "platform_specific"]
+        },
+        "use_cases": ["game_engine", "asset_pipeline", "testing"],
+        "recommended_for": ["development"],
+        "status": "community",
+        "author": "community",
+        "votes": 15
+      },
+      "iot-development": {
+        "name": "IoT Development Environment",
+        "description": "Internet of Things development and deployment",
+        "operational_tiers": {
+          "deployment": ["local", "container", "bare-metal"],
+          "environments": ["development", "staging", "production"],
+          "constraints": ["network_required", "platform_specific"]
+        },
+        "use_cases": ["embedded_development", "sensor_data", "edge_computing"],
+        "recommended_for": ["development", "platform"],
+        "status": "community",
+        "author": "community",
+        "votes": 8
+      }
+    }
+  },
+  "custom_patterns": {
+    "schema_version": "1.0.0",
+    "validation_rules": {
+      "required_fields": ["name", "description", "operational_tiers"],
+      "operational_tiers_required": ["deployment", "environments"],
+      "max_name_length": 50,
+      "max_description_length": 200
+    }
+  },
+  "metadata": {
+    "total_patterns": 8,
+    "official_patterns": 6,
+    "community_patterns": 2,
+    "last_updated": "2025-08-05T21:33:02Z"
+  }
+}

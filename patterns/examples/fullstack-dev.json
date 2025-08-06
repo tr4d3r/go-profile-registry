@@ -1,0 +1,50 @@
+{
+  "name": "Full Stack Development",
+  "slug": "fullstack-dev",
+  "description": "Complete full-stack development environment with frontend, backend, and database support",
+  "version": "1.0.0",
+  "operational_tiers": {
+    "deployment": ["local", "container", "cloud"],
+    "environments": ["development", "staging", "production"],
+    "constraints": ["network_required", "persistent_storage"]
+  },
+  "use_cases": [
+    "web_applications",
+    "database_integration",
+    "frontend_development",
+    "backend_apis",
+    "testing_environments"
+  ],
+  "recommended_for": ["development", "devops"],
+  "author": {
+    "name": "Full Stack Community",
+    "github": "fullstack-patterns"
+  },
+  "tags": ["fullstack", "web", "database", "api", "frontend", "backend"],
+  "examples": [
+    {
+      "module_name": "nodejs-express",
+      "description": "Node.js backend with Express framework",
+      "category": "development"
+    },
+    {
+      "module_name": "react-dev",
+      "description": "React frontend development tools",
+      "category": "development"
+    },
+    {
+      "module_name": "postgres-client",
+      "description": "PostgreSQL database client tools",
+      "category": "development"
+    }
+  ],
+  "prerequisites": [
+    "Node.js runtime",
+    "Package manager (npm/yarn)",
+    "Database access"
+  ],
+  "warnings": [
+    "Database connectivity required for full functionality",
+    "May consume significant local resources"
+  ]
+}
